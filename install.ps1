@@ -119,6 +119,9 @@ function Invoke-DotfilesSetup {
     # VSCode
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"
+    
+    # wt
+    "$dotfilesRoot\wt\settings.json" = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
   }
 
   foreach ($link in $links.GetEnumerator()) {
