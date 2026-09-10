@@ -82,8 +82,7 @@ function New-SymbolicLinkSafe {
     else {
       $timestamp = Get-Date -Format "yyyyMMdd_HHmmssfff"
       $backupPath = "$Target.backup.$timestamp"
-      Write-WarningMessage "Backing up existing item:"
-      Write-WarningMessage "$Target -> $backupPath"
+      Write-WarningMessage "Backing up existing item: $Target -> $backupPath"
       Move-Item `
         -LiteralPath $Target `
         -Destination $backupPath `
@@ -92,8 +91,7 @@ function New-SymbolicLinkSafe {
   }
 
   if ($PSCmdlet.ShouldProcess($Target, "Create symbolic link")) {
-    Write-Success "Linking:"
-    Write-Success "$Target -> $Source"
+    Write-Success "Linking: $Target -> $Source"
     try {
       New-Item `
         -ItemType SymbolicLink `
@@ -102,8 +100,7 @@ function New-SymbolicLinkSafe {
         -Force | Out-Null
     }
     catch {
-      Write-ErrorMessage "Failed to create symbolic link."
-      Write-ErrorMessage "Please make sure you are running PowerShell as Administrator, or Windows Developer Mode is enabled."
+      Write-ErrorMessage "Failed to create symbolic link.\nPlease make sure you are running PowerShell as Administrator, or Windows Developer Mode is enabled."
       throw
     }
   }
