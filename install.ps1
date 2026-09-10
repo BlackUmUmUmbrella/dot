@@ -32,6 +32,12 @@ function New-SymbolicLinkSafe {
     [Parameter(Mandatory)]
     [string]$Target
   )
+
+  if (-not (Test-Path -LiteralPath $Source)) {
+    Write-ErrorMessage "Source file does not exist, skipping: $Source"
+    return
+  }
+
   $targetParent = Split-Path -Parent $Target
   $targetName = Split-Path -Leaf $Target
   if (-not (Test-Path -LiteralPath $targetParent)) {
@@ -114,14 +120,34 @@ function Invoke-DotfilesSetup {
 
   $links = [ordered]@{
     # Alacritty
-    "$dotfilesRoot\alacritty\alacritty.toml" = "$env:APPDATA\alacritty\alacritty.toml"
+    "$dotfilesRoot\alacritty\alacritty.toml" = [System.IO.Path]::Combine(
+      $env:APPDATA,
+      'alacritty',
+      'alacritty.toml'
+    )
 
     # VSCode
-    "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
-    "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"
-    
+    "$dotfilesRoot\vscode\keybindings.json"  = [System.IO.Path]::Combine(
+      $env:APPDATA,
+      'Code',
+      'User',
+      'keybindings.json'
+    )
+    "$dotfilesRoot\vscode\settings.json"     = [System.IO.Path]::Combine(
+      $env:APPDATA,
+      'Code',
+      'User',
+      'settings.json'
+    )
+
     # wt
-    "$dotfilesRoot\wt\settings.json" = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    "$dotfilesRoot\wt\settings.json"         = [System.IO.Path]::Combine(
+      $env:LOCALAPPDATA,
+      'Packages',
+      'Microsoft.WindowsTerminal_8wekyb3d8bbwe',
+      'LocalState',
+      'settings.json'
+    )
   }
 
   foreach ($link in $links.GetEnumerator()) {
