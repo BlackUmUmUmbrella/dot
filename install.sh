@@ -66,8 +66,8 @@ main() {
   OS=$(detect_os)
   DOT_DIR=$(cd "$(dirname "$0")" && pwd)
 
-  # Alacritty
-  make_link "$DOT_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+  # Ghostty
+  make_link "$DOT_DIR/ghostty/config" "$HOME/.config/ghostty/config"
 
   # VSCode
   if [ "$OS" = "macOS" ]; then
