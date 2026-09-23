@@ -113,9 +113,6 @@ function Invoke-DotfilesSetup {
   }
 
   $links = [ordered]@{
-    # Alacritty
-    "$dotfilesRoot\alacritty\alacritty.toml" = "$env:APPDATA\alacritty\alacritty.toml"
-
     # VSCode
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"

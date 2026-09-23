@@ -66,9 +66,6 @@ main() {
   OS=$(detect_os)
   DOT_DIR=$(cd "$(dirname "$0")" && pwd)
 
-  # Ghostty
-  make_link "$DOT_DIR/ghostty/config" "$HOME/.config/ghostty/config"
-
   # VSCode
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
@@ -78,6 +75,8 @@ main() {
     make_link "$DOT_DIR/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
   fi
 
+  # WezTerm
+  make_link "$DOT_DIR/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
 }
 
 main "$@"
