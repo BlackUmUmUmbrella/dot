@@ -113,6 +113,13 @@ function Invoke-DotfilesSetup {
   }
 
   $links = [ordered]@{
+    # Emacs
+    "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
+    "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"
+
+    # Neovim
+    "$dotfilesRoot\nvim\init.lua" = "$env:LOCALAPPDATA\nvim\init.lua"
+
     # VSCode
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"

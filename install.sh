@@ -66,6 +66,13 @@ main() {
   OS=$(detect_os)
   DOT_DIR=$(cd "$(dirname "$0")" && pwd)
 
+  # Emacs
+  make_link "$DOT_DIR/emacs/early-init.el" "$HOME/.config/emacs/early-init.el"
+  make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
+
+  # Neovim
+  make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+
   # VSCode
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
