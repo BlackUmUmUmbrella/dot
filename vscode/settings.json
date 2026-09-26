@@ -176,8 +176,6 @@
   "catppuccin.italicKeywords": true,
   "catppuccin.syncWithIconPack": true,
   "catppuccin.workbenchMode": "default",
-  // Catppuccin Icon
-  "workbench.iconTheme": "catppuccin-mocha",
   "catppuccin-icons.associations.extensions": {},
   "catppuccin-icons.associations.files": {},
   "catppuccin-icons.associations.folders": {},
@@ -185,4 +183,5 @@
   "catppuccin-icons.hidesExplorerArrows": false,
   "catppuccin-icons.monochrome": false,
   "catppuccin-icons.specificFolders": true,
+  "workbench.iconTheme": "catppuccin-mocha",
 }

@@ -36,8 +36,16 @@ config.colors = {
     },
   },
 }
+config.window_padding = {
+    left = "1%",
+    right = "1%",
+    top = "1%",
+    bottom = "1%",
+}
+config.window_close_confirmation = "NeverPrompt"
 
-if wezterm.target_triple:find("apple") then
+if wezterm.target_triple:find("darwin") then
+  config.default_prog = { "/bin/zsh", "-l" }
   config.font_size = 13.0
   config.font = wezterm.font_with_fallback({
     "JetBrains Mono",
@@ -45,9 +53,9 @@ if wezterm.target_triple:find("apple") then
     "PingFang TC",
     "Sarasa Gothic TC"
   })
-  config.freetype_load_target = "Normal"
-  config.allow_square_glyphs_to_overflow_width = "Never"
+  config.window_background_opacity = 0.8
 elseif wezterm.target_triple:find("windows") then
+  config.default_prog = { "powershell.exe", "-NoLogo" }
   config.font_size = 11.0
   config.font = wezterm.font_with_fallback({
     "JetBrains Mono",
@@ -56,8 +64,9 @@ elseif wezterm.target_triple:find("windows") then
     "Microsoft JhengHei",
     "Noto Sans Mono",
   })
-  config.allow_square_glyphs_to_overflow_width = "Never"
+  config.window_background_opacity = 0.8
 elseif wezterm.target_triple:find("bsd") then
+  config.default_prog = { "/bin/bash", "-l" }
   config.font_size = 10.0
   config.font = wezterm.font_with_fallback({
     "JetBrains Mono",
@@ -65,7 +74,9 @@ elseif wezterm.target_triple:find("bsd") then
     "Sarasa Gothic TC",
     "Noto Sans Mono",
   })
+  config.window_background_opacity = 1.0
 else
+  config.default_prog = { "/bin/bash", "-l" }
   config.font_size = 9.0
   config.font = wezterm.font_with_fallback({
     "JetBrains Mono",
@@ -73,16 +84,7 @@ else
     "Sarasa Gothic TC",
     "Noto Sans Mono",
   })
-  config.freetype_load_target = "Normal"
-  config.freetype_render_target = "Normal"
-  config.freetype_load_flags = "DEFAULT"
+  config.window_background_opacity = 1.0
 end
-config.window_padding = {
-    left = 12,
-    right = 12,
-    top = 12,
-    bottom = 12,
-}
-config.window_close_confirmation = "NeverPrompt"
 
 return config
