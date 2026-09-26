@@ -76,8 +76,7 @@ function New-SymbolicLinkSafe {
     else {
       $timestamp = Get-Date -Format "yyyyMMdd_HHmmssfff"
       $backupPath = "$Target.backup.$timestamp"
-      Write-WarningMessage "Backing up existing item:"
-      Write-WarningMessage "$Target -> $backupPath"
+      Write-WarningMessage "Backing up existing item: $Target -> $backupPath"
       Move-Item `
         -LiteralPath $Target `
         -Destination $backupPath `
@@ -86,8 +85,7 @@ function New-SymbolicLinkSafe {
   }
 
   if ($PSCmdlet.ShouldProcess($Target, "Create symbolic link")) {
-    Write-Success "Linking:"
-    Write-Success "$Target -> $Source"
+    Write-Success "Linking: $Target -> $Source"
     try {
       New-Item `
         -ItemType SymbolicLink `
@@ -123,6 +121,9 @@ function Invoke-DotfilesSetup {
     # VSCode
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"
+
+    # wt
+    "$dotfilesRoot\wezterm\wezterm.lua" = "$env:USERPROFILE\.config\wezterm\wezterm.lua"
 
     # wt
     "$dotfilesRoot\wt\settings.json" = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
