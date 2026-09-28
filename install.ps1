@@ -115,6 +115,9 @@ function Invoke-DotfilesSetup {
     "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
     "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"
 
+    # Helix
+    "$dotfilesRoot\helix\config.toml" = "$env:APPDATA\helix\config.toml"
+
     # Neovim
     "$dotfilesRoot\nvim\init.lua" = "$env:LOCALAPPDATA\nvim\init.lua"
 
@@ -122,7 +125,7 @@ function Invoke-DotfilesSetup {
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"
 
-    # wt
+    # WezTerm
     "$dotfilesRoot\wezterm\wezterm.lua" = "$env:USERPROFILE\.config\wezterm\wezterm.lua"
 
     # wt

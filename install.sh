@@ -77,6 +77,9 @@ main() {
     make_link "$DOT_DIR/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
   fi
 
+  # Helix
+  make_link "$DOT_DIR/helix" "$HOME/.config/helix"
+  
   # Neovim
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
