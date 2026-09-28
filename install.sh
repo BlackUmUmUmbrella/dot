@@ -16,24 +16,24 @@ log_error() { printf "%s[ERROR]%s %s\n" "$COLOR_ERROR" "$COLOR_RESET" "$1" >&2; 
 detect_os() {
   KERNEL=$(uname -s)
   case "$KERNEL" in
-    Linux)
-      if [ -f /proc/sys/kernel/osrelease ] && grep -qi "microsoft" /proc/sys/kernel/osrelease 2>/dev/null; then
-          OS_TYPE="WSL"
-      elif [ -f /proc/version ] && grep -qi "microsoft" /proc/version 2>/dev/null; then
-          OS_TYPE="WSL"
-      else
-          OS_TYPE="Linux"
-      fi
-      ;;
-    Darwin)
-      OS_TYPE="macOS"
-      ;;
-    *BSD*|DragonFly)
-      OS_TYPE="BSD"
-      ;;
-    *)
-      OS_TYPE="unknown"
-      ;;
+  Linux)
+    if [ -f /proc/sys/kernel/osrelease ] && grep -qi "microsoft" /proc/sys/kernel/osrelease 2>/dev/null; then
+      OS_TYPE="WSL"
+    elif [ -f /proc/version ] && grep -qi "microsoft" /proc/version 2>/dev/null; then
+      OS_TYPE="WSL"
+    else
+      OS_TYPE="Linux"
+    fi
+    ;;
+  Darwin)
+    OS_TYPE="macOS"
+    ;;
+  *BSD* | DragonFly)
+    OS_TYPE="BSD"
+    ;;
+  *)
+    OS_TYPE="unknown"
+    ;;
   esac
   echo "$OS_TYPE"
 }
@@ -44,8 +44,8 @@ make_link() {
 
   _dst_dir=$(dirname "$_dst")
   if [ ! -d "$_dst_dir" ]; then
-      log_info "Creating parent directory: $_dst_dir"
-      mkdir -p "$_dst_dir"
+    log_info "Creating parent directory: $_dst_dir"
+    mkdir -p "$_dst_dir"
   fi
 
   if [ -L "$_dst" ]; then
@@ -70,8 +70,20 @@ main() {
   make_link "$DOT_DIR/emacs/early-init.el" "$HOME/.config/emacs/early-init.el"
   make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
 
+  # Ghostty
+  if [ "$OS" = "macOS" ]; then
+    make_link "$DOT_DIR/ghostty/config.ghostty" "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
+  else
+    make_link "$DOT_DIR/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
+  fi
+
   # Neovim
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+
+  # OmniWM
+  if [ "$OS" = "macOS" ]; then
+    make_link "$DOT_DIR/omniwm/settings.toml" "$HOME/.config/omniwm/settings.toml"
+  fi
 
   # VSCode
   if [ "$OS" = "macOS" ]; then
