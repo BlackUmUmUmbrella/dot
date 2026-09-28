@@ -70,9 +70,6 @@ main() {
   make_link "$DOT_DIR/emacs/early-init.el" "$HOME/.config/emacs/early-init.el"
   make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
 
-  # Helix
-  make_link "$DOT_DIR/helix/config.toml" "$HOME/.config/helix/config.toml"
-  
   # Neovim
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 

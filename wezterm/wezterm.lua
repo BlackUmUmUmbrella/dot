@@ -8,34 +8,6 @@ end)
 
 config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
-config.color_scheme = "Catppuccin Mocha"
-config.colors = {
-  background = "#11111b",
-  tab_bar = {
-    background = "#11111b",
-    active_tab = {
-      bg_color = "#11111b",
-      fg_color = "#cdd6f4",
-      intensity = "Bold",
-    },
-    inactive_tab = {
-      bg_color = "#11111b",
-      fg_color = "#585b70",
-    },
-    inactive_tab_hover = {
-      bg_color = "#181825",
-      fg_color = "#a6adc8",
-    },
-    new_tab = {
-      bg_color = "#11111b",
-      fg_color = "#585b70",
-    },
-    new_tab_hover = {
-      bg_color = "#18111b",
-      fg_color = "#a6adc8",
-    },
-  },
-}
 config.window_padding = {
     left = "1%",
     right = "1%",

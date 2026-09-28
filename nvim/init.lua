@@ -1,9 +1,15 @@
 --- References ---
+-- https://github.com/lazyvim/lazyvim
+-- https://github.com/nvchad/nvchad
+-- https://github.com/astronvim/astronvim
+-- https://github.com/nvim-lua/kickstart.nvim
+-- https://github.com/ayamir/nvimdots
 
 --- Options ---
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.cmdheight = 0
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -169,4 +175,24 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     end
   end,
   desc = "Disable heavy features on large files",
+})
+
+--- Packages ---
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({
+  spec = {},
 })

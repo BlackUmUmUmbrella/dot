@@ -1,9 +1,9 @@
 {
   // BUILTIN
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
-  "window.zoomLevel": -0.7,
+  "window.zoomLevel": -0.65,
   "workbench.startupEditor": "none",
   "workbench.enableExperiments": false,
   "editor.semanticHighlighting.enabled": true,
@@ -12,22 +12,10 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
-  "editor.tokenColorCustomizations": {
-    "[Catppuccin Mocha]": {
-      "textMateRules": [
-        {
-          "scope": "comment",
-          "settings": {
-            "fontStyle": "italic bold"
-          }
-        }
-      ]
-    }
-  },
   "[python]": {
     "editor.tabSize": 4,
   },
-  // VscodeVim
+  // Vim
   "vim.leader": "<space>",
   "vim.hlsearch": true,
   "vim.showcmd": false,
@@ -152,37 +140,4 @@
       ]
     },
   ],
-  // Catppuccin
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "catppuccin.accentColor": "blue",
-  "catppuccin.colorOverrides": {
-    "mocha": {
-      "base": "#11111b",
-      "mantle": "#11111b",
-      "crust": "#11111b",
-    },
-  },
-  "catppuccin.boldKeywords": true,
-  "catppuccin.bracketMode": "rainbow",
-  "catppuccin.customUIColors": {
-    "mocha": {
-      "editorLineNumber.foreground": "surface0",
-      "editorLineNumber.activeForeground": "green",
-      "widget.border": "accent",
-    },
-  },
-  "catppuccin.extraBordersEnabled": true,
-  "catppuccin.italicComments": true,
-  "catppuccin.italicKeywords": true,
-  "catppuccin.syncWithIconPack": true,
-  "catppuccin.workbenchMode": "default",
-  // Catppuccin Icon
-  "workbench.iconTheme": "catppuccin-mocha",
-  "catppuccin-icons.associations.extensions": {},
-  "catppuccin-icons.associations.files": {},
-  "catppuccin-icons.associations.folders": {},
-  "catppuccin-icons.associations.languages": {},
-  "catppuccin-icons.hidesExplorerArrows": false,
-  "catppuccin-icons.monochrome": false,
-  "catppuccin-icons.specificFolders": true,
 }
