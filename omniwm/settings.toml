@@ -1006,7 +1006,7 @@ binding = "Unassigned"
 id = "toggleFocusedWindowFloating"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Q"
 id = "closeFocusedWindow"
 
 [[hotkeys]]
@@ -1030,7 +1030,7 @@ binding = "Unassigned"
 id = "toggleWorkspaceLayout"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Space"
 id = "toggleOverview"
 
 [[hotkeys]]
