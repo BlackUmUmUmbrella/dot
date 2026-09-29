@@ -40,7 +40,7 @@
   :ensure nil
   :config
   (setq-default tab-width 2)
-	(setq-default create-lockfiles nil))
+  (setq-default create-lockfiles nil))
 
 (use-package cus-edit
   :ensure nil
@@ -81,30 +81,130 @@
   (prog-mode . show-paren-mode))
 
 (use-package files
-	:ensure nil
-	:custom
-	(make-backup-files nil)
-	(auto-save-default nil))
+  :ensure nil
+  :custom
+  (make-backup-files nil)
+  (auto-save-default nil))
 
 (use-package recentf
-	:ensure nil
-	:hook
-	(after-init . recentf-mode))
+  :ensure nil
+  :hook
+  (after-init . recentf-mode))
 
 (use-package startup
+  :ensure nil
+  :custom
+  (auto-save-list-file-prefix nil))
+
+(use-package ibuffer
 	:ensure nil
-	:custom
-	(auto-save-list-file-prefix nil))
+	:bind
+	(("C-x C-b" . ibuffer)))
+
+(use-package treesit
+	:ensure nil
+	:if (>= emacs-major-version 31)
+	:config
+	(setq treesit-enabled-modes t)
+	(setq treesit-font-lock-level 4)
+	(setq treesit-auto-install-grammar 'always)
+	(setq treesit-enabled-modes t))
 
 (use-package which-key
+  :hook
+  (after-init . which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.5))
+
+(use-package dashboard
 	:hook
-	(after-init . which-key-mode)
+	(after-init . dashboard-setup-startup-hook)
 	:config
-	(setq which-key-idle-delay 0.5))
+	(setq dashboard-startup-banner 'logo)
+	(setq dashboard-center-content t)
+	(setq dashboard-vertically-center-content t)
+	(setq dashboard-show-shortcuts t)
+	(setq dashboard-navigation-cycle t)
+	(setq dashboard-display-icons-p t)
+	(setq dashboard-icon-type 'nerd-icons)
+	(setq dashboard-set-heading-icons t)
+	(setq dashboard-set-file-icons t)
+	(setq dashboard-icon-file-height 1.25)
+	(setq dashboard-icon-file-v-adjust -0.125)
+	(setq dashboard-heading-icon-height 1.25)
+	(setq dashboard-heading-icon-v-adjust -0.125)
+	(setq dashboard-heading-shorcut-format " [%s]")
+	(setq dashboard-item-shortcuts '((recents   . "r")
+																	 (bookmarks . "m")
+																	 (projects  . "p")
+																	 (agenda    . "a")
+																	 (registers . "e")))
+	(setq dashboard-items '((recents . 10)
+													(bookmarks . 5)
+													(projects . 5)
+													(agenda . 3)
+													(registers . 3))))
+
+(use-package doom-themes
+	:hook
+	(after-init . (lambda () (load-theme 'doom-one t))))
+
+(use-package doom-modeline
+	:hook
+	(after-init . doom-modeline-mode)
+	:config
+	(setq doom-modeline-height 25)
+	(setq doom-modeline-bar-width 5)
+	(setq doom-modeline-minor-modes t))
+
+(use-package hide-mode-line
+	:hook
+	(completion-list-mode . hide-mode-line-mode)
+	(dired-sidebar-mode . hide-mode-line-mode)
+	(eshell-mode . hide-mode-line-mode)
+	(term-mode . hide-mode-line-mode))
+
+(use-package beacon
+	:hook
+	(after-init . beacon-mode)
+	:config
+	(setq beacon-size 50)
+	(setq beacon-color (face-foreground 'error nil 'default))
+	(setq beacon-blink-duration 0.5)
+	(setq beacon-blink-delay 0.5)
+	(setq beacon-blink-when-point-moves-vertically 20)
+	(setq beacon-blink-when-point-moves-horizontally 20)
+	(setq beacon-blink-when-focused t))
+
+(use-package solaire-mode
+	:hook
+	(doom-modeline-mode . solaire-global-mode))
+
+(use-package centaur-tabs
+	:bind
+	(:map evil-normal-state-map
+				("g t" . centaur-tabs-forward)
+				("g T" . centaur-tabs-backward))
+	:init
+	(setq centaur-tabs-style "bar")
+	(setq centaur-tabs-height 25)
+	(setq centaur-tabs-set-icons t)
+	(setq centaur-tabs-icon-type 'nerd-icons)
+	(setq centaur-tabs-set-bar 'over)
+	:hook
+	(after-init . centaur-tabs-mode))
+
+(use-package minions
+	:hook
+	(doom-modeline-mode . minions-mode))
+
+(use-package breadcrumb
+	:hook
+	(prog-mode . breadcrumb-local-mode))
 
 (use-package evil
-	:init
-	(setq evil-want-keybinding nil)
+  :init
+  (setq evil-want-keybinding nil)
   :hook
   (after-init . evil-mode))
 
@@ -116,20 +216,71 @@
   (setq-default evil-escape-delay 0.2))
 
 (use-package evil-collection
-	:hook
-	(evil-mode . evil-collection-init))
+  :hook
+  (evil-mode . evil-collection-init))
 
 (use-package evil-nerd-commenter
-	:after evil
-	:bind
-	(:map evil-normal-state-map
-				("gcc" . evilnc-comment-or-uncomment-lines))
-	(:map evil-visual-state-map
-				("gc" . evilnc-comment-or-uncomment-lines)))
+  :after evil
+  :bind
+  (:map evil-normal-state-map
+        ("gcc" . evilnc-comment-or-uncomment-lines))
+  (:map evil-visual-state-map
+        ("gc" . evilnc-comment-or-uncomment-lines)))
 
 (use-package evil-matchit
+  :hook
+  (evil-mode . global-evil-matchit-mode))
+
+(use-package evil-visualstar
 	:hook
-	(evil-mode . global-evil-matchit-mode))
+	(evil-mode . global-evil-visualstar-mode))
+
+(use-package evil-goggles
+	:hook
+	(evil-mode . evil-goggles-mode)
+	:config
+	(setq evil-goggles-pulse t)
+	(setq evil-goggles-duration 1.000)
+	(evil-goggles-use-diff-faces))
+
+(use-package evil-leader
+	:hook
+	(evil-mode . global-evil-leader-mode)
+	:config
+	(setq evil-leader/leader "<SPC>")
+	(evil-leader/set-key
+		"<SPC>" 'execute-extended-command
+		"ff" 'find-file
+		"fb" 'counsel-ibuffer
+		"fe" 'counsel-flycheck
+		"fc" 'counsel-load-theme
+		"fr" 'counsel-recentf
+		"fw" 'counsel-rg
+		"fs" 'swiper-isearch
+		"tt" 'emacs-init-time
+		"tm" 'dired-sidebar-toggle-sidebar
+		"ts" 'scratch
+		"tr" 'quickrun
+		"gl" 'avy-goto-line
+		"gw" 'avy-goto-word-0
+		"gc" 'avy-goto-char-timer
+		"ww" 'ace-window
+		"wd" 'delete-other-windows
+		"hv" 'helpful-variable
+		"hx" 'helpful-command
+		"hk" 'helpful-key
+		"hf" 'helpful-callable
+		"hd" 'helpful-at-point
+		"1" 'winum-select-window-1
+		"2" 'winum-select-window-2
+		"3" 'winum-select-window-3
+		"4" 'winum-select-window-4
+		"5" 'winum-select-window-5
+		"6" 'winum-select-window-6
+		"7" 'winum-select-window-7
+		"8" 'winum-select-window-8
+		"9" 'winum-select-window-9
+		"0" 'winum-select-window-0-or-10))
 
 (use-package ivy
   :hook
@@ -139,33 +290,41 @@
   (setq ivy-wrap t)
   (setq ivy-fixed-height-minibuffer t)
   (setq ivy-use-virtual-buffers t)
-	(setq ivy-count-format "[%d/%d] ")
+  (setq ivy-count-format "[%d/%d] ")
   (setq ivy-dynamic-exhibit-delay-ms 200)
-	(setq ivy-initial-inputs-alist nil)
+  (setq ivy-initial-inputs-alist nil)
   (setq counsel-rg-base-command
         "rg --no-heading --line-number --color never %s .")
-	(setq ivy-re-builders-alist
-				'((t . ivy--regex-ignore-order)))
-	(setq ivy-more-chars-alist
-				'((counsel-rg . 2)
-					(counsel-projectile-rg . 2))))
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-ignore-order)))
+  (setq ivy-more-chars-alist
+        '((counsel-rg . 2)
+          (counsel-projectile-rg . 2))))
+
+(use-package ivy-rich
+	:hook
+	(ivy-mode . ivy-rich-mode))
+
+(use-package nerd-icons-ivy-rich
+	:hook
+	(ivy-mode . nerd-icons-ivy-rich-mode))
 
 (use-package amx
-	:hook
-	(ivy-mode . amx-mode))
+  :hook
+  (ivy-mode . amx-mode))
 
 (use-package wgrep
-	:config
-	(setq wgrep-auto-save-buffer t))
+  :config
+  (setq wgrep-auto-save-buffer t))
 
 (use-package counsel
   :hook
   (ivy-mode . counsel-mode)
-	:bind
-	(("C-c r" . counsel-recentf)
-	 ("C-c w" . counsel-rg)
-	 ("C-c j" . counsel-dired-jump)
-	 ("C-c b" . counsel-ibuffer)))
+  :bind
+  (("C-c r" . counsel-recentf)
+   ("C-c w" . counsel-rg)
+   ("C-c j" . counsel-dired-jump)
+   ("C-c b" . counsel-ibuffer)))
 
 (use-package swiper
   :bind
@@ -193,74 +352,227 @@
   (("M-n" . flycheck-next-error)
    ("M-p" . flycheck-previous-error)))
 
-(use-package diredfl
+(use-package flycheck-pos-tip
 	:hook
-	(dired-mode . diredfl-mode))
+	(global-flycheck-mode . flycheck-pos-tip-mode))
+
+(use-package diredfl
+  :hook
+  (dired-mode . diredfl-mode))
 
 (use-package symbol-overlay
-	:hook
-	(prog-mode . symbol-overlay-mode)
-	:bind
-	(("M-i" . symbol-overlay-put)
+  :hook
+  (prog-mode . symbol-overlay-mode)
+  :bind
+  (("M-i" . symbol-overlay-put)
    ("M-S-n" . symbol-overlay-next)
    ("M-S-p" . symbol-overlay-prev)
    ("M-S-r" . symbol-overlay-remove-all))
-	:config
-	(setq symbol-overlay-idle-time 0.3))
+  :config
+  (setq symbol-overlay-idle-time 0.3))
 
 (use-package diff-hl
-	:hook
-	(after-init . global-diff-hl-mode)
-	(after-init . global-diff-hl-show-hunk-mouse-mode)
-	(dired-mode . diff-hl-dired-mode)
-	(magit-post-refresh . diff-hl-magit-post-refresh))
+  :hook
+  (after-init . global-diff-hl-mode)
+  (after-init . global-diff-hl-show-hunk-mouse-mode)
+  (dired-mode . diff-hl-dired-mode)
+  (magit-post-refresh . diff-hl-magit-post-refresh))
 
 (use-package hl-todo
-	:hook
-	(prog-mode . global-hl-todo-mode)
-	:config
-	(setq hl-todo-highlight-punctuation ":")
+  :hook
+  (prog-mode . global-hl-todo-mode)
+  :config
+  (setq hl-todo-highlight-punctuation ":")
   (setq hl-todo-text-modes nil)
-	(setq hl-todo-keyword-faces
-				'(("TODO" warning bold)
-					("FIXME" error bold)
-					("REVIEW" font-lock-keyword-face bold)
-					("HACK" font-lock-constant-face bold)
-					("DEPRECATED" font-lock-doc-face bold)
-					("BUG" error bold)
-					("XXX" font-lock-constant-face bold)
-					("NOTE" success bold))))
+  (setq hl-todo-keyword-faces
+        '(("TODO" warning bold)
+          ("FIXME" error bold)
+          ("REVIEW" font-lock-keyword-face bold)
+          ("HACK" font-lock-constant-face bold)
+          ("DEPRECATED" font-lock-doc-face bold)
+          ("BUG" error bold)
+          ("XXX" font-lock-constant-face bold)
+          ("NOTE" success bold))))
+
+(use-package nerd-icons-ibuffer
+	:hook
+	(ibuffer-mode . nerd-icons-ibuffer-mode))
+
+(use-package nerd-icons-dired
+	:hook
+	(dired-mode . nerd-icons-dired-mode))
 
 (use-package ace-window
-	:bind
-	(([remap other-window] . ace-window))
-	:config
-	(setq aw-background nil)
-	(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+  :bind
+  (([remap other-window] . ace-window))
+  :config
+  (setq aw-background nil)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
+(use-package winum
+	:hook
+	(after-init . winum-mode))
 
 (use-package company
-	:hook
+  :hook
   (prog-mode . global-company-mode)
   :config
   (setq company-idle-delay 0.24)
-	(setq company-minimum-prefix-length 1)
-	(defun my/company-backend-with-yas (backend)
-		(if (or (not (listp backend))
-						(member 'company-yasnippet backend))
-				(append (if (listp backend)
-										backend
-									(list backend))
-								'(:with company-yasnippet))
-			backend))
+  (setq company-minimum-prefix-length 1)
+  (defun my/company-backend-with-yas (backend)
+    (if (or (not (listp backend))
+            (member 'company-yasnippet backend))
+        (append (if (listp backend)
+                    backend
+                  (list backend))
+                '(:with company-yasnippet))
+      backend))
   (setq company-backends
         (mapcar #'my/company-backend-with-yas company-backends)))
 
 (use-package yasnippet
-	:hook
-	(prog-mode . yas-minor-mode))
+  :hook
+  (prog-mode . yas-minor-mode))
 
 (use-package yasnippet-snippets
-	:after yasnippet)
+  :after yasnippet)
+
+(use-package avy
+	:bind
+	(("M-g l" . avy-goto-line)
+	 ("M-g c" . avy-goto-char-timer)
+	 ("M-g w" . avy-goto-word-0)))
+
+(use-package direnv
+	:hook
+	(prog-mode . direnv-mode))
+
+(use-package uv-mode
+  :hook
+  (python-mode . uv-mode-auto-activate-hook))
+
+(use-package lua-mode
+  :config
+  (setq lua-indent-level 2)
+  (setq lua-indent-nested-block-content-align nil)
+  (setq lua-indent-close-paren-align nil))
+
+(use-package dotenv-mode)
+(use-package toml-mode)
+(use-package web-mode)
+(use-package json-mode)
+(use-package yaml-mode)
+(use-package csv-mode)
+(use-package go-mode)
+(use-package rust-mode)
+(use-package typescript-mode)
+(use-package markdown-mode)
+(use-package ess)
+
+(when (not (eq system-type 'windows-nt))
+	(use-package ghostel))
+
+(use-package dired-sidebar
+	:bind
+	(("<f1>" . dired-sidebar-toggle-sidebar))
+	:config
+	(setq dired-sidebar-theme 'nerd-icons)
+	(setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t))
+
+(use-package quickrun
+	:commands quickrun
+	:config
+	(setq quickrun-focus-p nil)
+	(setq quickrun-truncate-lines nil))
+
+(use-package scratch
+	:commands scratch)
+
+(use-package lsp-mode
+	:commands lsp
+	:config
+	(setq lsp-idle-delay 0.5)
+  (setq lsp-log-io nil)
+  (setq lsp-completion-provider :none)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-enable-folding nil)
+  (setq lsp-enable-text-document-color nil)
+	(setq lsp-enable-symbol-highlighting nil)
+	(setq lsp-enable-on-type-formatting nil)
+	(setq lsp-signature-auto-activate nil)
+	(setq lsp-enable-file-watchers nil)
+	(setq lsp-headerline-breadcrumb-enable nil)
+	(setq lsp-modeline-code-actions-enable nil)
+	(setq lsp-modeline-diagnostics-enable nil)
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\dist\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]__pycache__\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]target\\'")
+	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'"))
+
+(use-package lsp-ui
+	:after lsp-mode
+	:config
+	(setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-doc-delay 0.5)
+  (setq lsp-ui-doc-max-width 80)
+  (setq lsp-ui-doc-max-height 20)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-sideline-delay 0.5)
+  (setq lsp-ui-peek-enable t))
+
+(use-package dap-mode
+	:after lsp-mode)
+
+(use-package dape
+	:commands dape)
+
+(use-package projectile
+	:hook
+  (after-init . projectile-mode)
+  :bind
+  (("C-c p" . projectile-command-map))
+  :config
+  (setq projectile-completion-system 'default)
+  (setq projectile-indexing-method 'alien)
+  (setq projectile-enable-caching t)
+  (setq projectile-sort-order 'recently-active)
+  (setq projectile-globally-ignored-directories
+        (append '(".git" "node_modules" "__pycache__" ".venv" "target" "dist" "build")
+                projectile-globally-ignored-directories))
+  (setq projectile-known-projects-file
+        (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
+  (when (executable-find "rg")
+    (setq projectile-generic-command "rg --files --hidden --follow --color=never")))
+
+(use-package persp-mode
+  :hook
+	(after-init . persp-mode)
+  :config
+  (setq persp-keymap-prefix (kbd "C-c p"))
+  (setq persp-nil-name "main")
+  (setq persp-auto-save-opt 1)
+  (setq persp-set-last-persp-for-new-frames t))
+
+(use-package persp-mode-projectile-bridge
+	:after (persp-mode projectile)
+	:hook
+	((persp-mode-projectile-bridge-mode . (lambda ()
+																					(if persp-mode-projectile-bridge-mode
+																							(persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+																						(persp-mode-projectile-bridge-kill-perspectives))))
+	 (after-init . persp-mode-projectile-bridge-mode))
+	:config
+	(setq persp-mode-projectile-bridge-persp-name-prefix ""))
 
 (provide 'init)
 ;;; init.el ends here

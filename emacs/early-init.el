@@ -34,7 +34,7 @@
 (setq default-frame-alist
       '((menu-bar-lines . 0)
         (tool-bar-lines . 0)
-				(internal-border-width . 12)
+        (internal-border-width . 12)
         (horizontal-scroll-bars)
         (vertical-scroll-bars)))
 
@@ -98,7 +98,7 @@
 													 "Simhei")
 						 when (find-font (font-spec :name font))
              return (progn
-                      (setq face-font-rescale-alist `((,font . 1.3)))
+                      (setq face-font-rescale-alist `((,font . 1.1)))
                       (set-fontset-font t 'han (font-spec :family font))))))
 (add-hook 'window-setup-hook #'my/setup-fonts)
 (add-hook 'server-after-make-frame-hook #'my/setup-fonts)
