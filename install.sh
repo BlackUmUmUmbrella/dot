@@ -87,7 +87,10 @@ main() {
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/omniwm/settings.toml" "$HOME/.config/omniwm/settings.toml"
   fi
-
+  
+  # Vim
+  make_link "$DOT_DIR/vim/init.vim" "$HOME/.vimrc"
+  
   # VSCode
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
