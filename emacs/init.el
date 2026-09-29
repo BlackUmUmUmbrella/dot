@@ -97,18 +97,18 @@
   (auto-save-list-file-prefix nil))
 
 (use-package ibuffer
-	:ensure nil
-	:bind
-	(("C-x C-b" . ibuffer)))
+  :ensure nil
+  :bind
+  (("C-x C-b" . ibuffer)))
 
 (use-package treesit
-	:ensure nil
-	:if (>= emacs-major-version 31)
-	:config
-	(setq treesit-enabled-modes t)
-	(setq treesit-font-lock-level 4)
-	(setq treesit-auto-install-grammar 'always)
-	(setq treesit-enabled-modes t))
+  :ensure nil
+  :if (>= emacs-major-version 31)
+  :config
+  (setq treesit-enabled-modes t)
+  (setq treesit-font-lock-level 4)
+  (setq treesit-auto-install-grammar 'always)
+  (setq treesit-enabled-modes t))
 
 (use-package which-key
   :hook
@@ -117,90 +117,90 @@
   (setq which-key-idle-delay 0.5))
 
 (use-package dashboard
-	:hook
-	(after-init . dashboard-setup-startup-hook)
-	:config
-	(setq dashboard-startup-banner 'logo)
-	(setq dashboard-center-content t)
-	(setq dashboard-vertically-center-content t)
-	(setq dashboard-show-shortcuts t)
-	(setq dashboard-navigation-cycle t)
-	(setq dashboard-display-icons-p t)
-	(setq dashboard-icon-type 'nerd-icons)
-	(setq dashboard-set-heading-icons t)
-	(setq dashboard-set-file-icons t)
-	(setq dashboard-icon-file-height 1.25)
-	(setq dashboard-icon-file-v-adjust -0.125)
-	(setq dashboard-heading-icon-height 1.25)
-	(setq dashboard-heading-icon-v-adjust -0.125)
-	(setq dashboard-heading-shorcut-format " [%s]")
-	(setq dashboard-item-shortcuts '((recents   . "r")
-																	 (bookmarks . "m")
-																	 (projects  . "p")
-																	 (agenda    . "a")
-																	 (registers . "e")))
-	(setq dashboard-items '((recents . 10)
-													(bookmarks . 5)
-													(projects . 5)
-													(agenda . 3)
-													(registers . 3))))
+  :hook
+  (after-init . dashboard-setup-startup-hook)
+  :config
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t)
+  (setq dashboard-vertically-center-content t)
+  (setq dashboard-show-shortcuts t)
+  (setq dashboard-navigation-cycle t)
+  (setq dashboard-display-icons-p t)
+  (setq dashboard-icon-type 'nerd-icons)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-icon-file-height 1.25)
+  (setq dashboard-icon-file-v-adjust -0.125)
+  (setq dashboard-heading-icon-height 1.25)
+  (setq dashboard-heading-icon-v-adjust -0.125)
+  (setq dashboard-heading-shorcut-format " [%s]")
+  (setq dashboard-item-shortcuts '((recents   . "r")
+                                   (bookmarks . "m")
+                                   (projects  . "p")
+                                   (agenda    . "a")
+                                   (registers . "e")))
+  (setq dashboard-items '((recents . 10)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          (agenda . 3)
+                          (registers . 3))))
 
 (use-package doom-themes
-	:hook
-	(after-init . (lambda () (load-theme 'doom-one t))))
+  :hook
+  (after-init . (lambda () (load-theme 'doom-one t))))
 
 (use-package doom-modeline
-	:hook
-	(after-init . doom-modeline-mode)
-	:config
-	(setq doom-modeline-height 25)
-	(setq doom-modeline-bar-width 5)
-	(setq doom-modeline-minor-modes t))
+  :hook
+  (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 25)
+  (setq doom-modeline-bar-width 5)
+  (setq doom-modeline-minor-modes t))
 
 (use-package hide-mode-line
-	:hook
-	(completion-list-mode . hide-mode-line-mode)
-	(dired-sidebar-mode . hide-mode-line-mode)
-	(eshell-mode . hide-mode-line-mode)
-	(term-mode . hide-mode-line-mode))
+  :hook
+  (completion-list-mode . hide-mode-line-mode)
+  (dired-sidebar-mode . hide-mode-line-mode)
+  (eshell-mode . hide-mode-line-mode)
+  (term-mode . hide-mode-line-mode))
 
 (use-package beacon
-	:hook
-	(after-init . beacon-mode)
-	:config
-	(setq beacon-size 50)
-	(setq beacon-color (face-foreground 'error nil 'default))
-	(setq beacon-blink-duration 0.5)
-	(setq beacon-blink-delay 0.5)
-	(setq beacon-blink-when-point-moves-vertically 20)
-	(setq beacon-blink-when-point-moves-horizontally 20)
-	(setq beacon-blink-when-focused t))
+  :hook
+  (after-init . beacon-mode)
+  :config
+  (setq beacon-size 50)
+  (setq beacon-color (face-foreground 'error nil 'default))
+  (setq beacon-blink-duration 0.5)
+  (setq beacon-blink-delay 0.5)
+  (setq beacon-blink-when-point-moves-vertically 20)
+  (setq beacon-blink-when-point-moves-horizontally 20)
+  (setq beacon-blink-when-focused t))
 
 (use-package solaire-mode
-	:hook
-	(doom-modeline-mode . solaire-global-mode))
+  :hook
+  (doom-modeline-mode . solaire-global-mode))
 
 (use-package centaur-tabs
-	:bind
-	(:map evil-normal-state-map
-				("g t" . centaur-tabs-forward)
-				("g T" . centaur-tabs-backward))
-	:init
-	(setq centaur-tabs-style "bar")
-	(setq centaur-tabs-height 25)
-	(setq centaur-tabs-set-icons t)
-	(setq centaur-tabs-icon-type 'nerd-icons)
-	(setq centaur-tabs-set-bar 'over)
-	:hook
-	(after-init . centaur-tabs-mode))
+  :bind
+  (:map evil-normal-state-map
+        ("g t" . centaur-tabs-forward)
+        ("g T" . centaur-tabs-backward))
+  :init
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-height 25)
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-icon-type 'nerd-icons)
+  (setq centaur-tabs-set-bar 'over)
+  :hook
+  (after-init . centaur-tabs-mode))
 
 (use-package minions
-	:hook
-	(doom-modeline-mode . minions-mode))
+  :hook
+  (doom-modeline-mode . minions-mode))
 
 (use-package breadcrumb
-	:hook
-	(prog-mode . breadcrumb-local-mode))
+  :hook
+  (prog-mode . breadcrumb-local-mode))
 
 (use-package evil
   :init
@@ -232,55 +232,55 @@
   (evil-mode . global-evil-matchit-mode))
 
 (use-package evil-visualstar
-	:hook
-	(evil-mode . global-evil-visualstar-mode))
+  :hook
+  (evil-mode . global-evil-visualstar-mode))
 
 (use-package evil-goggles
-	:hook
-	(evil-mode . evil-goggles-mode)
-	:config
-	(setq evil-goggles-pulse t)
-	(setq evil-goggles-duration 1.000)
-	(evil-goggles-use-diff-faces))
+  :hook
+  (evil-mode . evil-goggles-mode)
+  :config
+  (setq evil-goggles-pulse t)
+  (setq evil-goggles-duration 1.000)
+  (evil-goggles-use-diff-faces))
 
 (use-package evil-leader
-	:hook
-	(evil-mode . global-evil-leader-mode)
-	:config
-	(setq evil-leader/leader "<SPC>")
-	(evil-leader/set-key
-		"<SPC>" 'execute-extended-command
-		"ff" 'find-file
-		"fb" 'counsel-ibuffer
-		"fe" 'counsel-flycheck
-		"fc" 'counsel-load-theme
-		"fr" 'counsel-recentf
-		"fw" 'counsel-rg
-		"fs" 'swiper-isearch
-		"tt" 'emacs-init-time
-		"tm" 'dired-sidebar-toggle-sidebar
-		"ts" 'scratch
-		"tr" 'quickrun
-		"gl" 'avy-goto-line
-		"gw" 'avy-goto-word-0
-		"gc" 'avy-goto-char-timer
-		"ww" 'ace-window
-		"wd" 'delete-other-windows
-		"hv" 'helpful-variable
-		"hx" 'helpful-command
-		"hk" 'helpful-key
-		"hf" 'helpful-callable
-		"hd" 'helpful-at-point
-		"1" 'winum-select-window-1
-		"2" 'winum-select-window-2
-		"3" 'winum-select-window-3
-		"4" 'winum-select-window-4
-		"5" 'winum-select-window-5
-		"6" 'winum-select-window-6
-		"7" 'winum-select-window-7
-		"8" 'winum-select-window-8
-		"9" 'winum-select-window-9
-		"0" 'winum-select-window-0-or-10))
+  :hook
+  (evil-mode . global-evil-leader-mode)
+  :config
+  (setq evil-leader/leader "<SPC>")
+  (evil-leader/set-key
+    "<SPC>" 'execute-extended-command
+    "ff" 'find-file
+    "fb" 'counsel-ibuffer
+    "fe" 'counsel-flycheck
+    "fc" 'counsel-load-theme
+    "fr" 'counsel-recentf
+    "fw" 'counsel-rg
+    "fs" 'swiper-isearch
+    "tt" 'emacs-init-time
+    "tm" 'dired-sidebar-toggle-sidebar
+    "ts" 'scratch
+    "tr" 'quickrun
+    "gl" 'avy-goto-line
+    "gw" 'avy-goto-word-0
+    "gc" 'avy-goto-char-timer
+    "ww" 'ace-window
+    "wd" 'delete-other-windows
+    "hv" 'helpful-variable
+    "hx" 'helpful-command
+    "hk" 'helpful-key
+    "hf" 'helpful-callable
+    "hd" 'helpful-at-point
+    "1" 'winum-select-window-1
+    "2" 'winum-select-window-2
+    "3" 'winum-select-window-3
+    "4" 'winum-select-window-4
+    "5" 'winum-select-window-5
+    "6" 'winum-select-window-6
+    "7" 'winum-select-window-7
+    "8" 'winum-select-window-8
+    "9" 'winum-select-window-9
+    "0" 'winum-select-window-0-or-10))
 
 (use-package ivy
   :hook
@@ -302,12 +302,12 @@
           (counsel-projectile-rg . 2))))
 
 (use-package ivy-rich
-	:hook
-	(ivy-mode . ivy-rich-mode))
+  :hook
+  (ivy-mode . ivy-rich-mode))
 
 (use-package nerd-icons-ivy-rich
-	:hook
-	(ivy-mode . nerd-icons-ivy-rich-mode))
+  :hook
+  (ivy-mode . nerd-icons-ivy-rich-mode))
 
 (use-package amx
   :hook
@@ -353,8 +353,8 @@
    ("M-p" . flycheck-previous-error)))
 
 (use-package flycheck-pos-tip
-	:hook
-	(global-flycheck-mode . flycheck-pos-tip-mode))
+  :hook
+  (global-flycheck-mode . flycheck-pos-tip-mode))
 
 (use-package diredfl
   :hook
@@ -395,12 +395,12 @@
           ("NOTE" success bold))))
 
 (use-package nerd-icons-ibuffer
-	:hook
-	(ibuffer-mode . nerd-icons-ibuffer-mode))
+  :hook
+  (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package nerd-icons-dired
-	:hook
-	(dired-mode . nerd-icons-dired-mode))
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 (use-package ace-window
   :bind
@@ -410,8 +410,8 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package winum
-	:hook
-	(after-init . winum-mode))
+  :hook
+  (after-init . winum-mode))
 
 (use-package company
   :hook
@@ -438,14 +438,14 @@
   :after yasnippet)
 
 (use-package avy
-	:bind
-	(("M-g l" . avy-goto-line)
-	 ("M-g c" . avy-goto-char-timer)
-	 ("M-g w" . avy-goto-word-0)))
+  :bind
+  (("M-g l" . avy-goto-line)
+   ("M-g c" . avy-goto-char-timer)
+   ("M-g w" . avy-goto-word-0)))
 
 (use-package direnv
-	:hook
-	(prog-mode . direnv-mode))
+  :hook
+  (prog-mode . direnv-mode))
 
 (use-package uv-mode
   :hook
@@ -470,60 +470,60 @@
 (use-package ess)
 
 (when (not (eq system-type 'windows-nt))
-	(use-package ghostel))
+  (use-package ghostel))
 
 (when (not (eq system-type 'windows-nt))
-	(use-package mason
-		:config
-		(mason-setup)))
+  (use-package mason
+    :config
+    (mason-setup)))
 
 (use-package dired-sidebar
-	:bind
-	(("<f1>" . dired-sidebar-toggle-sidebar))
-	:config
-	(setq dired-sidebar-theme 'nerd-icons)
-	(setq dired-sidebar-subtree-line-prefix "__")
+  :bind
+  (("<f1>" . dired-sidebar-toggle-sidebar))
+  :config
+  (setq dired-sidebar-theme 'nerd-icons)
+  (setq dired-sidebar-subtree-line-prefix "__")
   (setq dired-sidebar-theme 'vscode)
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
 
 (use-package quickrun
-	:commands quickrun
-	:config
-	(setq quickrun-focus-p nil)
-	(setq quickrun-truncate-lines nil))
+  :commands quickrun
+  :config
+  (setq quickrun-focus-p nil)
+  (setq quickrun-truncate-lines nil))
 
 (use-package scratch
-	:commands scratch)
+  :commands scratch)
 
 (use-package lsp-mode
-	:commands lsp
-	:config
-	(setq lsp-idle-delay 0.5)
+  :commands lsp
+  :config
+  (setq lsp-idle-delay 0.5)
   (setq lsp-log-io nil)
   (setq lsp-completion-provider :none)
   (setq lsp-enable-file-watchers nil)
   (setq lsp-enable-folding nil)
   (setq lsp-enable-text-document-color nil)
-	(setq lsp-enable-symbol-highlighting nil)
-	(setq lsp-enable-on-type-formatting nil)
-	(setq lsp-signature-auto-activate nil)
-	(setq lsp-enable-file-watchers nil)
-	(setq lsp-headerline-breadcrumb-enable nil)
-	(setq lsp-modeline-code-actions-enable nil)
-	(setq lsp-modeline-diagnostics-enable nil)
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\dist\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]__pycache__\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]target\\'")
-	(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'"))
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-signature-auto-activate nil)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\dist\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]__pycache__\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]target\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'"))
 
 (use-package lsp-ui
-	:after lsp-mode
-	:config
-	(setq lsp-ui-doc-enable t)
+  :after lsp-mode
+  :config
+  (setq lsp-ui-doc-enable t)
   (setq lsp-ui-doc-show-with-cursor nil)
   (setq lsp-ui-doc-show-with-mouse nil)
   (setq lsp-ui-doc-delay 0.5)
@@ -536,13 +536,13 @@
   (setq lsp-ui-peek-enable t))
 
 (use-package dap-mode
-	:after lsp-mode)
+  :after lsp-mode)
 
 (use-package dape
-	:commands dape)
+  :commands dape)
 
 (use-package projectile
-	:hook
+  :hook
   (after-init . projectile-mode)
   :bind
   (("C-c p" . projectile-command-map))
@@ -561,7 +561,7 @@
 
 (use-package persp-mode
   :hook
-	(after-init . persp-mode)
+  (after-init . persp-mode)
   :config
   (setq persp-keymap-prefix (kbd "C-c p"))
   (setq persp-nil-name "main")
@@ -569,15 +569,15 @@
   (setq persp-set-last-persp-for-new-frames t))
 
 (use-package persp-mode-projectile-bridge
-	:after (persp-mode projectile)
-	:hook
-	(after-init . persp-mode-projectile-bridge-mode)
-	(persp-mode-projectile-bridge-mode . (lambda ()
-																				 (if persp-mode-projectile-bridge-mode
-																						 (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-																					 (persp-mode-projectile-bridge-kill-perspectives))))
-	:config
-	(setq persp-mode-projectile-bridge-persp-name-prefix ""))
+  :after (persp-mode projectile)
+  :hook
+  (after-init . persp-mode-projectile-bridge-mode)
+  (persp-mode-projectile-bridge-mode . (lambda ()
+                                         (if persp-mode-projectile-bridge-mode
+                                             (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+                                           (persp-mode-projectile-bridge-kill-perspectives))))
+  :config
+  (setq persp-mode-projectile-bridge-persp-name-prefix ""))
 
 (provide 'init)
 ;;; init.el ends here
