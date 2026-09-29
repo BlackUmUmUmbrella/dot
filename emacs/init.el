@@ -472,6 +472,11 @@
 (when (not (eq system-type 'windows-nt))
 	(use-package ghostel))
 
+(when (not (eq system-type 'windows-nt))
+	(use-package mason
+		:config
+		(mason-setup)))
+
 (use-package dired-sidebar
 	:bind
 	(("<f1>" . dired-sidebar-toggle-sidebar))
@@ -566,11 +571,11 @@
 (use-package persp-mode-projectile-bridge
 	:after (persp-mode projectile)
 	:hook
-	((persp-mode-projectile-bridge-mode . (lambda ()
-																					(if persp-mode-projectile-bridge-mode
-																							(persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-																						(persp-mode-projectile-bridge-kill-perspectives))))
-	 (after-init . persp-mode-projectile-bridge-mode))
+	(after-init . persp-mode-projectile-bridge-mode)
+	(persp-mode-projectile-bridge-mode . (lambda ()
+																				 (if persp-mode-projectile-bridge-mode
+																						 (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+																					 (persp-mode-projectile-bridge-kill-perspectives))))
 	:config
 	(setq persp-mode-projectile-bridge-persp-name-prefix ""))
 
