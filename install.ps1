@@ -115,6 +115,9 @@ function Invoke-DotfilesSetup {
     "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
     "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"
 
+    # LeopardWM
+    "$dotfilesRoot\leopardwm\config.toml" = "$env:APPDATA\leopardwm\config\config.toml"
+
     # Helix
     "$dotfilesRoot\helix\config.toml" = "$env:APPDATA\helix\config.toml"
 
