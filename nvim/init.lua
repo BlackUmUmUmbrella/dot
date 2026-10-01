@@ -4,6 +4,8 @@
 -- https://github.com/astronvim/astronvim
 -- https://github.com/nvim-lua/kickstart.nvim
 -- https://github.com/ayamir/nvimdots
+-- https://github.com/NormalNvim/NormalNvim
+-- https://github.com/lunarvim/lunarvim
 
 --- Options ---
 vim.opt.termguicolors = true
@@ -164,7 +166,14 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 })
 
 --- Packages ---
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local profile = vim.env.NVIM_PROFILE or "lazyvim"
+vim.g.profile = profile
+local data_dir = vim.fn.stdpath("data") .. "/" .. vim.g.profile
+local state_dir = vim.fn.stdpath("state") .. "/" .. vim.g.profile
+local config_dir = vim.fn.stdpath("config")
+local lazyroot = data_dir .. "/lazy"
+local lazypath = lazyroot .. "/lazy.nvim"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -180,8 +189,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local profile = vim.env.NVIM_PROFILE or "lazyvim"
-vim.g.profile = profile
 local specs = {}
 if vim.g.profile == "lazyvim" then
 	specs = {
@@ -210,6 +217,7 @@ if vim.g.profile == "lazyvim" then
 		},
 		{
 			"saghen/blink.cmp",
+			version = "1.*",
 			opts = {
 				completion = {
 					menu = {
@@ -253,7 +261,7 @@ if vim.g.profile == "astro" then
 end
 
 if vim.g.profile == "nvchad" then
-	vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
+	vim.g.base46_cache = data_dir .. "/base46/"
 	specs = {
 		{
 			"NvChad/NvChad",
@@ -374,195 +382,6 @@ end
 
 if vim.g.profile == "self" then
 	specs = {
-		{
-			"catppuccin/nvim",
-			lazy = false,
-			priority = 1000,
-			name = "catppuccin",
-			config = function()
-				require("catppuccin").setup({
-					flavour = "mocha",
-					background = {
-						light = "latte",
-						dark = "mocha",
-					},
-					transparent_background = false,
-					float = {
-						transparent = false,
-						solid = false,
-					},
-					term_colors = false,
-					dim_inactive = {
-						enabled = false,
-						shade = "dark",
-						percentage = 0.2,
-					},
-					no_italic = false,
-					no_bold = false,
-					no_underline = false,
-					styles = {
-						comments = { "italic" },
-						conditionals = { "bold" },
-						loops = { "bold" },
-						functions = { "bold" },
-						keywords = { "italic" },
-						strings = {},
-						variables = {},
-						numbers = {},
-						booleans = { "bold", "italic" },
-						properties = {},
-						types = {},
-						operators = { "bold" },
-						miscs = {},
-					},
-					lsp_styles = {
-						virtual_text = {
-							errors = { "italic" },
-							hints = { "italic" },
-							warnings = { "italic" },
-							information = { "italic" },
-							ok = { "italic" },
-						},
-						underlines = {
-							errors = { "underline" },
-							hints = { "underline" },
-							warnings = { "underline" },
-							information = { "underline" },
-							ok = { "underline" },
-						},
-						inlay_hints = {
-							background = true,
-						},
-					},
-					color_overrides = {
-						mocha = {
-							base = "#11111b",
-							mantle = "#11111b",
-						},
-					},
-					custom_highlights = {},
-					highlight_overrides = {
-						all = function(colors)
-							return {
-								NormalFloat = { fg = colors.text, bg = colors.mantle },
-								FloatBorder = {
-									fg = colors.blue,
-									bg = colors.mantle,
-								},
-								CursorLineNr = { fg = "#a6e3a1", bold = true },
-								Pmenu = { fg = colors.overlay2, bg = colors.base },
-								PmenuBorder = { fg = colors.surface1, bg = colors.base },
-								PmenuSel = { bg = colors.green, fg = colors.base },
-							}
-						end,
-					},
-					auto_integrations = true,
-					integrations = {
-						aerial = false,
-						alpha = true,
-						artio = true,
-						barbar = false,
-						barbecue = {
-							dim_dirname = true,
-							bold_basename = true,
-							dim_context = false,
-							alt_background = false,
-						},
-						beacon = false,
-						blink_cmp = {
-							style = "bordered",
-						},
-						blink_indent = true,
-						blink_pairs = true,
-						buffon = false,
-						coc_nvim = false,
-						colorful_winsep = {
-							enabled = false,
-							color = "red",
-						},
-						dashboard = true,
-						diffview = false,
-						dropbar = {
-							enabled = false,
-							color_mode = false,
-						},
-						fern = false,
-						fidget = true,
-						flash = false,
-						fzf = true,
-						gitgraph = false,
-						gitsigns = true,
-						grug_far = false,
-						harpoon = false,
-						headlines = false,
-						hop = false,
-						indent_blankline = {
-							enabled = true,
-							scope_color = "lavender",
-							colored_indent_levels = false,
-						},
-						leap = false,
-						lightspeed = false,
-						lir = {
-							enabled = false,
-							git_status = false,
-						},
-						lsp_saga = false,
-						markview = false,
-						mason = true,
-						mini = { enabled = false, indentscope_color = "" },
-						neotree = false,
-						neogit = false,
-						neotest = false,
-						noice = false,
-						notifier = false,
-						cmp = false,
-						copilot_vim = false,
-						dap = true,
-						dap_ui = true,
-						navic = {
-							enabled = true,
-							custom_bg = "NONE",
-						},
-						notify = true,
-						nvim_surround = false,
-						nvimtree = true,
-						treesitter_context = true,
-						ts_rainbow2 = false,
-						ts_rainbow = false,
-						ufo = false,
-						window_picker = false,
-						octo = false,
-						overseer = false,
-						pounce = false,
-						rainbow_delimiters = true,
-						render_markdown = true,
-						snacks = {
-							enabled = false,
-							indent_scope_color = "",
-						},
-						symbols_outline = false,
-						telekasten = false,
-						telescope = {
-							enabled = false,
-						},
-						lsp_trouble = false,
-						dadbod_ui = false,
-						gitgutter = false,
-						illuminate = {
-							enabled = true,
-							lsp = true,
-						},
-						sandwich = false,
-						signify = false,
-						vim_sneak = false,
-						vimwiki = false,
-						which_key = true,
-					},
-				})
-				vim.cmd.colorsche("catppuccin")
-			end,
-		},
 		{
 			"akinsho/bufferline.nvim",
 			lazy = true,
@@ -749,43 +568,6 @@ if vim.g.profile == "self" then
 			},
 		},
 		{
-			"nvim-treesitter/nvim-treesitter",
-			lazy = false,
-			branch = "main",
-			build = ":TSUpdate",
-			dependencies = {
-				{
-					"nvim-treesitter/nvim-treesitter-context",
-					config = function()
-						require("treesitter-context").setup({
-							enable = true,
-							line_numbers = true,
-							max_lines = 3,
-							min_window_height = 0,
-							multiline_threshold = 20,
-							trim_scope = "outer",
-							mode = "cursor",
-							zindex = 50,
-						})
-					end,
-				},
-			},
-			config = function()
-				require("nvim-treesitter").install({
-					"bash",
-					"c",
-					"cpp",
-					"json",
-					"lua",
-					"markdown",
-					"markdown_inline",
-					"python",
-					"toml",
-					"yaml",
-				})
-			end,
-		},
-		{
 			"RRethy/vim-illuminate",
 			lazy = true,
 			event = "VeryLazy",
@@ -819,16 +601,6 @@ if vim.g.profile == "self" then
 					disable_keymaps = false,
 				})
 			end,
-		},
-		{
-			"mason-org/mason.nvim",
-			opts = {
-				ui = {
-					border = "rounded",
-					width = 0.92,
-					height = 0.92,
-				},
-			},
 		},
 		{
 			"mason-org/mason-lspconfig.nvim",
@@ -1044,22 +816,296 @@ if vim.g.profile == "self" then
 	}
 end
 
-local general_specs = {
-	{
-		"mason-org/mason.nvim",
-		opts = {
-			ui = {
-				border = "rounded",
-				width = 0.92,
-				height = 0.92,
+local catppuccin_setup = {
+	"catppuccin/nvim",
+	lazy = false,
+	priority = 1000,
+	name = "catppuccin",
+	config = function()
+		require("catppuccin").setup({
+			flavour = "mocha",
+			background = {
+				light = "latte",
+				dark = "mocha",
 			},
+			transparent_background = false,
+			float = {
+				transparent = false,
+				solid = false,
+			},
+			term_colors = false,
+			dim_inactive = {
+				enabled = false,
+				shade = "dark",
+				percentage = 0.2,
+			},
+			no_italic = false,
+			no_bold = false,
+			no_underline = false,
+			styles = {
+				comments = { "italic" },
+				conditionals = { "bold" },
+				loops = { "bold" },
+				functions = { "bold" },
+				keywords = { "italic" },
+				strings = {},
+				variables = {},
+				numbers = {},
+				booleans = { "bold", "italic" },
+				properties = {},
+				types = {},
+				operators = { "bold" },
+				miscs = {},
+			},
+			lsp_styles = {
+				virtual_text = {
+					errors = { "italic" },
+					hints = { "italic" },
+					warnings = { "italic" },
+					information = { "italic" },
+					ok = { "italic" },
+				},
+				underlines = {
+					errors = { "underline" },
+					hints = { "underline" },
+					warnings = { "underline" },
+					information = { "underline" },
+					ok = { "underline" },
+				},
+				inlay_hints = {
+					background = true,
+				},
+			},
+			color_overrides = {
+				mocha = {
+					base = "#11111b",
+					mantle = "#11111b",
+				},
+			},
+			custom_highlights = {},
+			highlight_overrides = {
+				all = function(colors)
+					return {
+						NormalFloat = { fg = colors.text, bg = colors.mantle },
+						FloatBorder = {
+							fg = colors.blue,
+							bg = colors.mantle,
+						},
+						CursorLineNr = { fg = "#a6e3a1", bold = true },
+						Pmenu = { fg = colors.overlay2, bg = colors.base },
+						PmenuBorder = { fg = colors.surface1, bg = colors.base },
+						PmenuSel = { bg = colors.green, fg = colors.base },
+					}
+				end,
+			},
+			auto_integrations = true,
+			integrations = {
+				aerial = false,
+				alpha = true,
+				artio = true,
+				barbar = false,
+				barbecue = {
+					dim_dirname = true,
+					bold_basename = true,
+					dim_context = false,
+					alt_background = false,
+				},
+				beacon = false,
+				blink_cmp = {
+					style = "bordered",
+				},
+				blink_indent = true,
+				blink_pairs = true,
+				buffon = false,
+				coc_nvim = false,
+				colorful_winsep = {
+					enabled = false,
+					color = "red",
+				},
+				dashboard = true,
+				diffview = false,
+				dropbar = {
+					enabled = false,
+					color_mode = false,
+				},
+				fern = false,
+				fidget = true,
+				flash = false,
+				fzf = true,
+				gitgraph = false,
+				gitsigns = true,
+				grug_far = false,
+				harpoon = false,
+				headlines = false,
+				hop = false,
+				indent_blankline = {
+					enabled = true,
+					scope_color = "lavender",
+					colored_indent_levels = false,
+				},
+				leap = false,
+				lightspeed = false,
+				lir = {
+					enabled = false,
+					git_status = false,
+				},
+				lsp_saga = false,
+				markview = false,
+				mason = true,
+				mini = { enabled = false, indentscope_color = "" },
+				neotree = false,
+				neogit = false,
+				neotest = false,
+				noice = false,
+				notifier = false,
+				cmp = false,
+				copilot_vim = false,
+				dap = true,
+				dap_ui = true,
+				navic = {
+					enabled = true,
+					custom_bg = "NONE",
+				},
+				notify = true,
+				nvim_surround = false,
+				nvimtree = true,
+				treesitter_context = true,
+				ts_rainbow2 = false,
+				ts_rainbow = false,
+				ufo = false,
+				window_picker = false,
+				octo = false,
+				overseer = false,
+				pounce = false,
+				rainbow_delimiters = true,
+				render_markdown = true,
+				snacks = {
+					enabled = false,
+					indent_scope_color = "",
+				},
+				symbols_outline = false,
+				telekasten = false,
+				telescope = {
+					enabled = false,
+				},
+				lsp_trouble = false,
+				dadbod_ui = false,
+				gitgutter = false,
+				illuminate = {
+					enabled = true,
+					lsp = true,
+				},
+				sandwich = false,
+				signify = false,
+				vim_sneak = false,
+				vimwiki = false,
+				which_key = true,
+			},
+		})
+		vim.cmd.colorsche("catppuccin")
+	end,
+}
+local nordic_setup = {
+	"AlexvZyl/nordic.nvim",
+	config = function()
+		require("nordic").setup({
+			on_palette = function(palette) end,
+			after_palette = function(palette) end,
+			on_highlight = function(highlights, palette)
+				highlights.Normal = { fg = palette.fg, bg = palette.black0 }
+			end,
+			bold_keywords = true,
+			italic_comments = true,
+			transparent = {
+				bg = false,
+				float = false,
+			},
+			bright_border = true,
+			reduced_blue = false,
+			swap_backgrounds = false,
+			cursorline = {
+				bold = true,
+				bold_number = true,
+				theme = "dark",
+				blend = 0.85,
+			},
+			visual = {
+				bold = false,
+				bold_number = true,
+				theme = "dark",
+				blend = 0.85,
+			},
+			noice = {
+				style = "classic",
+			},
+			telescope = {
+				style = "flat",
+			},
+			leap = {
+				dim_backdrop = false,
+			},
+			ts_context = {
+				dark_background = true,
+			},
+		})
+		require("nordic").load()
+	end,
+}
+local treesitter_setup = {
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	branch = "main",
+	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter").setup({
+			install_dir = data_dir .. "/site",
+		})
+		require("nvim-treesitter").install({
+			"bash",
+			"c",
+			"cpp",
+			"json",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"python",
+			"toml",
+			"yaml",
+		})
+	end,
+}
+local mason_setup = {
+	"mason-org/mason.nvim",
+	opts = {
+		install_root_dir = data_dir .. "/mason",
+		ui = {
+			border = "rounded",
+			width = 0.92,
+			height = 0.92,
 		},
 	},
 }
-vim.list_extend(specs, general_specs)
+local extra_plugins = {
+	lazyvim = {},
+	astro = {},
+	nvchad = {},
+	mini = {},
+	self = { nordic_setup },
+	all = {
+		treesitter_setup,
+		mason_setup,
+	},
+}
+vim.list_extend(specs, extra_plugins.all)
+vim.list_extend(specs, extra_plugins[vim.g.profile] or {})
 
 require("lazy").setup({
 	spec = specs,
+	root = lazyroot,
+	lockfile = config_dir .. "/lockfiles/" .. profile .. ".json",
+	state = state_dir .. "/state.json",
+	readme = { root = state_dir .. "/readme" },
+	rocks = { root = data_dir .. "/rocks" },
 	ui = {
 		size = {
 			width = 0.92,
