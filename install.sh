@@ -79,18 +79,23 @@ main() {
 
   # Helix
   make_link "$DOT_DIR/helix" "$HOME/.config/helix"
-  
+
   # Neovim
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+
+  # Niri
+  if [ "$OS" = "Linux" ]; then
+    make_link "$DOT_DIR/niri/config.kdl" "$HOME/.config/niri/config.kdl"
+  fi
 
   # OmniWM
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/omniwm/settings.toml" "$HOME/.config/omniwm/settings.toml"
   fi
-  
+
   # Vim
   make_link "$DOT_DIR/vim/init.vim" "$HOME/.vimrc"
-  
+
   # VSCode
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
