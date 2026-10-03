@@ -1,10 +1,13 @@
+// Keyboard Setup
 input {
   keyboard {
     xkb {
     }
   }
   touchpad {
-    off
+    // off
+    tap
+    natural-scroll
   }
   mouse {
     off
@@ -13,8 +16,10 @@ input {
     off
   }
 }
+
+// Layout Setup
 layout {
-  gaps 8
+  gaps 12
   center-focused-column "never"
   preset-column-widths {
     proportion 0.33333
@@ -34,18 +39,24 @@ layout {
     off
   }
 }
-spawn-at-startup "waybar"
+
+// Auto Startup
+// spawn-at-startup "waybar"
 animations {
   off
 }
+
+// Window Rules
 window-rule {
   match app-id=r#"firefox$"# title="^Picture-in-Picture$"
   open-floating true
 }
+
+// Keybindings
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
-  Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
-  Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+  Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; } // Dependency: foot
+  Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; } // Dependency: fuzzel
   XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
   XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }

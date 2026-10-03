@@ -70,6 +70,11 @@ main() {
   make_link "$DOT_DIR/emacs/early-init.el" "$HOME/.config/emacs/early-init.el"
   make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
 
+  # foot
+  if [ "$OS" = "Linux" ]; then
+    make_link "$DOT_DIR/foot/foot.ini" "$HOME/.config/foot/foot.ini"
+  fi
+
   # Ghostty
   if [ "$OS" = "macOS" ]; then
     make_link "$DOT_DIR/ghostty/config.ghostty" "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
@@ -84,9 +89,9 @@ main() {
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
   # Niri
-  # if [ "$OS" = "Linux" ]; then
-  #   make_link "$DOT_DIR/niri/config.kdl" "$HOME/.config/niri/config.kdl"
-  # fi
+  if [ "$OS" = "Linux" ]; then
+    make_link "$DOT_DIR/niri/config.kdl" "$HOME/.config/niri/config.kdl"
+  fi
 
   # OmniWM
   # if [ "$OS" = "macOS" ]; then
