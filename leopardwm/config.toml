@@ -1,9 +1,9 @@
 [layout]
-gap = 12
-outer_gap_left = 12
-outer_gap_right = 12
-outer_gap_top = 12
-outer_gap_bottom = 12
+gap = 16
+outer_gap_left = 16
+outer_gap_right = 16
+outer_gap_top = 16
+outer_gap_bottom = 16
 centering_mode = "center"
 center_past_edges = false
 width_presets = [
@@ -20,8 +20,8 @@ height_presets = [
 
 [appearance]
 active_border = true
-active_border_color = "89B4FA"
-active_border_width = 2
+active_border_color = "0078D4"
+active_border_width = 4
 active_border_position = "outside"
 tab_strip_height = 24
 tab_strip_bg = "000000"
@@ -94,29 +94,29 @@ disabled = [
     "move_to_workspace_8",
     "move_to_workspace_9",
 ]
-"Alt+L" = "focus_right"
-"Alt+Shift+=" = "cycle_width_up"
-"Alt+3" = "switch_workspace_3"
-"Alt+Shift+C" = "center_column"
-"Alt+Shift+4" = "move_to_workspace_4"
-"Alt+Shift+-" = "cycle_width_down"
-"Alt+Shift+F" = "toggle_floating"
-"Alt+Shift+Q" = "close_window"
-"Alt+1" = "switch_workspace_1"
-"Alt+Shift+1" = "move_to_workspace_1"
-"Alt+," = "focus_monitor_left"
-"Alt+Shift+3" = "move_to_workspace_3"
-"Alt+Shift+," = "move_to_monitor_left"
-"Alt+4" = "switch_workspace_4"
-"Alt+Shift+2" = "move_to_workspace_2"
-"Alt+Shift+L" = "move_column_right"
-"Alt+Shift+H" = "move_column_left"
-"Alt+Shift+Space" = "toggle_overview"
 "Alt+." = "focus_monitor_right"
-"Alt+Shift+R" = "reload"
-"Alt+H" = "focus_left"
+"Alt+4" = "switch_workspace_4"
+"Alt+Shift+4" = "move_to_workspace_4"
 "Alt+Shift+." = "move_to_monitor_right"
 "Alt+F" = "toggle_fullscreen"
+"Alt+Shift+3" = "move_to_workspace_3"
+"Alt+Shift+F" = "toggle_floating"
+"Alt+Shift+," = "move_to_monitor_left"
+"Alt+Shift+R" = "reload"
+"Alt+Shift+Space" = "toggle_overview"
+"Alt+Shift+=" = "cycle_width_up"
+"Alt+H" = "focus_left"
+"Alt+Shift+L" = "move_column_right"
+"Alt+3" = "switch_workspace_3"
+"Alt+Shift+2" = "move_to_workspace_2"
+"Alt+Shift+Q" = "close_window"
+"Alt+Shift+-" = "cycle_width_down"
+"Alt+," = "focus_monitor_left"
+"Alt+Shift+1" = "move_to_workspace_1"
+"Alt+L" = "focus_right"
+"Alt+Shift+C" = "center_column"
+"Alt+Shift+H" = "move_column_left"
+"Alt+1" = "switch_workspace_1"
 "Alt+2" = "switch_workspace_2"
 
 [[window_rules]]
@@ -128,12 +128,12 @@ sticky = false
 
 [gestures]
 enabled = false
-swipe_left = "focus_left"
-swipe_right = "focus_right"
-swipe_up = "focus_up"
-swipe_down = "focus_down"
-scroll_up = "focus_next"
-scroll_down = "focus_prev"
+swipe_left = ""
+swipe_right = ""
+swipe_up = ""
+swipe_down = ""
+scroll_up = ""
+scroll_down = ""
 
 [snap_hints]
 enabled = true
