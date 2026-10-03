@@ -112,27 +112,27 @@ function Invoke-DotfilesSetup {
 
   $links = [ordered]@{
     # Emacs
-    "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
-    "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"
+    # "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
+    # "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"
 
     # LeopardWM
-    "$dotfilesRoot\leopardwm\config.toml" = "$env:APPDATA\leopardwm\config\config.toml"
+    # "$dotfilesRoot\leopardwm\config.toml" = "$env:APPDATA\leopardwm\config\config.toml"
 
     # Helix
-    "$dotfilesRoot\helix\config.toml" = "$env:APPDATA\helix\config.toml"
+    # "$dotfilesRoot\helix\config.toml" = "$env:APPDATA\helix\config.toml"
 
     # Neovim
-    "$dotfilesRoot\nvim\init.lua" = "$env:LOCALAPPDATA\nvim\init.lua"
+    # "$dotfilesRoot\nvim\init.lua" = "$env:LOCALAPPDATA\nvim\init.lua"
 
     # Vim
-    "$dotfilesRoot\vim\init.vim" = "$env:USERPROFILE\_vimrc"
+    # "$dotfilesRoot\vim\init.vim" = "$env:USERPROFILE\_vimrc"
     
     # VSCode
     "$dotfilesRoot\vscode\keybindings.json" = "$env:APPDATA\Code\User\keybindings.json"
     "$dotfilesRoot\vscode\settings.json" = "$env:APPDATA\Code\User\settings.json"
 
     # WezTerm
-    "$dotfilesRoot\wezterm\wezterm.lua" = "$env:USERPROFILE\.config\wezterm\wezterm.lua"
+    # "$dotfilesRoot\wezterm\wezterm.lua" = "$env:USERPROFILE\.config\wezterm\wezterm.lua"
 
     # wt
     "$dotfilesRoot\wt\settings.json" = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
