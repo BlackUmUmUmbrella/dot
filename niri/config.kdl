@@ -19,7 +19,7 @@ input {
 
 // Layout Setup
 layout {
-  gaps 12
+  gaps 4
   center-focused-column "never"
   preset-column-widths {
     proportion 0.33333
@@ -28,7 +28,7 @@ layout {
   }
   default-column-width { proportion 1.0; }
   focus-ring {
-    width 2
+    width 4
     active-color "#7fc8ff"
     inactive-color "#505050"
   }
@@ -41,12 +41,19 @@ layout {
 }
 
 // Auto Startup
-// spawn-at-startup "waybar"
+// spawn-at-startup "waybar" // Dependency: waybar
+
+// Animation
 animations {
-  off
+  // off
+  slowdown 1.0
 }
 
 // Window Rules
+window-rule {
+  geometry-corner-radius 4
+  clip-to-geometry true
+}
 window-rule {
   match app-id=r#"firefox$"# title="^Picture-in-Picture$"
   open-floating true
@@ -90,8 +97,8 @@ binds {
   Mod+Shift+R { switch-preset-column-width-back; }
   Mod+F { maximize-column; }
   Mod+Shift+F { toggle-window-floating; }
-  Mod+Minus { set-column-width "-10%"; }
-  Mod+Equal { set-column-width "+10%"; }
+  Mod+Minus { set-column-width "-5%"; }
+  Mod+Equal { set-column-width "+5%"; }
   Print { screenshot; }
   Ctrl+Print { screenshot-screen; }
   Alt+Print { screenshot-window; }
