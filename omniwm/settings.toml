@@ -3,7 +3,7 @@ monitorDwindleOverrides = []
 monitorGapOverrides = []
 monitorNiriOverrides = []
 monitorOrientationOverrides = []
-schemaVersion = 3
+schemaVersion = 4
 
 [appearance]
 mode = "dark"
@@ -118,11 +118,13 @@ margin = 1
 alwaysCenterSingleColumn = true
 centerFocusedColumn = "never"
 containerPrimarySpanPresets = [0.3333333333333333, 0.5, 0.6666666666666666]
+edgeGaps = true
 infiniteLoop = true
 singleWindowFit = "fill"
 visibleContainerCount = 1
 
 [overview]
+enabled = true
 invertScrollDirection = false
 matchFocusBorder = false
 mouseScrollSpeed = 1.0
@@ -187,6 +189,7 @@ excludedBundleIDs = []
 height = 40.0
 hideEmptyWorkspaces = true
 hideInNativeFullscreen = false
+hoverPreviewsEnabled = true
 inactiveIconOpacity = 1.0
 notchActiveZoneWidth = 100.0
 notchMode = "splitActiveRight"
@@ -1018,6 +1021,14 @@ id = "closeFocusedWindow"
 [[hotkeys]]
 binding = "Unassigned"
 id = "openMenuAnywhere"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "setWindowMark"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "removeWindowMark"
 
 [[hotkeys]]
 binding = "Unassigned"
