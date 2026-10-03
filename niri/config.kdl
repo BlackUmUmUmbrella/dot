@@ -61,9 +61,9 @@ window-rule {
 
 // Keybindings
 binds {
-  Mod+Shift+Slash { show-hotkey-overlay; }
-  Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; } // Dependency: foot
-  Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; } // Dependency: fuzzel
+  Alt+Shift+Slash { show-hotkey-overlay; }
+  Alt+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; } // Dependency: foot
+  Alt+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; } // Dependency: fuzzel
   XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
   XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -75,32 +75,32 @@ binds {
   XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
   XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
-  Mod+Shift+Space repeat=false { toggle-overview; }
-  Mod+Shift+Q repeat=false { close-window; }
-  Mod+H { focus-column-left; }
-  Mod+L { focus-column-right; }
-  Mod+Shift+H { move-column-left; }
-  Mod+Shift+L { move-column-right; }
-  Mod+Comma { focus-monitor-left; }
-  Mod+Period { focus-monitor-right; }
-  Mod+Shift+Comma { move-column-to-monitor-left; }
-  Mod+Shift+Period { move-column-to-monitor-right; }
-  Mod+1 { focus-workspace 1; }
-  Mod+2 { focus-workspace 2; }
-  Mod+3 { focus-workspace 3; }
-  Mod+4 { focus-workspace 4; }
-  Mod+Shift+1 { move-column-to-workspace 1; }
-  Mod+Shift+2 { move-column-to-workspace 2; }
-  Mod+Shift+3 { move-column-to-workspace 3; }
-  Mod+Shift+4 { move-column-to-workspace 4; }
-  Mod+R { switch-preset-column-width; }
-  Mod+Shift+R { switch-preset-column-width-back; }
-  Mod+F { maximize-column; }
-  Mod+Shift+F { toggle-window-floating; }
-  Mod+Minus { set-column-width "-5%"; }
-  Mod+Equal { set-column-width "+5%"; }
+  Alt+Shift+Space repeat=false { toggle-overview; }
+  Alt+Shift+Q repeat=false { close-window; }
+  Alt+H { focus-column-left; }
+  Alt+L { focus-column-right; }
+  Alt+Shift+H { move-column-left; }
+  Alt+Shift+L { move-column-right; }
+  Alt+Comma { focus-monitor-left; }
+  Alt+Period { focus-monitor-right; }
+  Alt+Shift+Comma { move-column-to-monitor-left; }
+  Alt+Shift+Period { move-column-to-monitor-right; }
+  Alt+1 { focus-workspace 1; }
+  Alt+2 { focus-workspace 2; }
+  Alt+3 { focus-workspace 3; }
+  Alt+4 { focus-workspace 4; }
+  Alt+Shift+1 { move-column-to-workspace 1; }
+  Alt+Shift+2 { move-column-to-workspace 2; }
+  Alt+Shift+3 { move-column-to-workspace 3; }
+  Alt+Shift+4 { move-column-to-workspace 4; }
+  Alt+R { switch-preset-column-width; }
+  Alt+Shift+R { switch-preset-column-width-back; }
+  Alt+F { maximize-column; }
+  Alt+Shift+F { toggle-window-floating; }
+  Alt+Minus { set-column-width "-5%"; }
+  Alt+Equal { set-column-width "+5%"; }
   Print { screenshot; }
   Ctrl+Print { screenshot-screen; }
   Alt+Print { screenshot-window; }
-  Mod+Shift+E { quit; }
+  Alt+Shift+E { quit; }
 }
