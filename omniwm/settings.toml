@@ -11,18 +11,18 @@ tabRailAppIcons = true
 
 [borders]
 enabled = true
-width = 2.0
+width = 4.0
 
 [borders.color]
 alpha = 1.0
-blue = 0.9568627450980391
-green = 0.6784313725490196
-red = 0.5411764705882353
+blue = 1.0
+green = 0.4784313725490196
+red = 0.0
 
 [borders.glow]
 enabled = true
-opacity = 0.5
-radius = 2.0
+opacity = 0.8
+radius = 4.0
 
 [borders.gradient]
 direction = "topLeftToBottomRight"
@@ -30,15 +30,15 @@ enabled = true
 
 [borders.gradient.end]
 alpha = 1.0
-blue = 0.4980392156862745
-green = 0.6627450980392157
-red = 0.9607843137254902
+blue = 0.0
+green = 0.5843137254901961
+red = 1.0
 
 [borders.gradient.start]
 alpha = 1.0
-blue = 0.9568627450980391
-green = 0.6784313725490196
-red = 0.5411764705882353
+blue = 1.0
+green = 0.4784313725490196
+red = 0.0
 
 [clipboard]
 historyEnabled = false
@@ -58,21 +58,21 @@ useGlobalGaps = true
 [focus]
 crossesMonitorAtEdge = false
 followsMouse = false
-followsWindowToMonitor = false
+followsWindowToMonitor = true
 lockModifier = "off"
 moveCrossesMonitorAtEdge = false
 moveMouseToFocusedWindow = false
 raiseOnMouseFocus = false
 
 [gaps]
-fullscreenUsesOuterGaps = false
-size = 8.0
+fullscreenUsesOuterGaps = true
+size = 12.0
 
 [gaps.outer]
-bottom = 4.0
-left = 4.0
-right = 4.0
-top = 4.0
+bottom = 12.0
+left = 12.0
+right = 12.0
+top = 30.0
 
 [general]
 animationsEnabled = true
@@ -116,7 +116,7 @@ margin = 1
 
 [niri]
 alwaysCenterSingleColumn = true
-centerFocusedColumn = "always"
+centerFocusedColumn = "never"
 containerPrimarySpanPresets = [0.3333333333333333, 0.5, 0.6666666666666666]
 infiniteLoop = true
 singleWindowFit = "fill"
@@ -124,7 +124,7 @@ visibleContainerCount = 1
 
 [overview]
 invertScrollDirection = false
-matchFocusBorder = true
+matchFocusBorder = false
 mouseScrollSpeed = 1.0
 zoom = 1.0
 
@@ -138,9 +138,9 @@ red = 0.0
 
 [overview.windowBorders.hovered]
 alpha = 1.0
-blue = 1.0
-green = 0.6
-red = 0.4
+blue = 0.34509803921568627
+green = 0.8196078431372549
+red = 0.18823529411764706
 
 [overview.windowBorders.normal]
 alpha = 0.5
@@ -150,9 +150,9 @@ red = 0.3
 
 [overview.windowBorders.selected]
 alpha = 1.0
-blue = 0.4
-green = 0.8
-red = 0.3
+blue = 1.0
+green = 0.4784313725490196
+red = 0.0
 
 [quakeTerminal]
 animationDuration = 0.2
@@ -175,13 +175,13 @@ mode = "macOS"
 [scratchpads.labels]
 
 [statusBar]
-showAppNames = false
+showAppNames = true
 showWorkspaceName = true
-useWorkspaceId = false
+useWorkspaceId = true
 
 [workspaceBar]
 backgroundOpacity = 0.5
-deduplicateAppIcons = false
+deduplicateAppIcons = true
 enabled = true
 excludedBundleIDs = []
 height = 40.0
@@ -190,12 +190,12 @@ hideInNativeFullscreen = false
 inactiveIconOpacity = 1.0
 notchActiveZoneWidth = 100.0
 notchMode = "splitActiveRight"
-position = "overlappingMenuBar"
+position = "belowMenuBar"
 reserveLayoutSpace = false
-revealHoldMilliseconds = 300.0
+revealHoldMilliseconds = 200.0
 revealModifier = "option"
 showAccentHighlights = false
-showFloatingWindows = false
+showFloatingWindows = true
 showItemBackgrounds = false
 showLabels = true
 solidBlackBackground = false
@@ -206,6 +206,12 @@ xOffset = 0.0
 yOffset = 0.0
 
 [workspaceBar.iconOverrides]
+
+[workspaceBar.textColor]
+alpha = 1.0
+blue = 1.0
+green = 1.0
+red = 1.0
 
 [[appRules]]
 bundleId = "com.openai.codex"
@@ -674,11 +680,11 @@ binding = "Unassigned"
 id = "expelWindowFromColumn"
 
 [[hotkeys]]
-binding = "Option+Shift+Comma"
+binding = "Option+Comma"
 id = "focusMonitorNext"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Period"
 id = "focusMonitorPrevious"
 
 [[hotkeys]]
@@ -702,11 +708,11 @@ binding = "Unassigned"
 id = "moveWorkspaceToMonitor.down"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Comma"
 id = "moveWindowToMonitor.left"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Period"
 id = "moveWindowToMonitor.right"
 
 [[hotkeys]]
@@ -914,11 +920,11 @@ binding = "Unassigned"
 id = "setContainerPrimarySpan.increase10Percent"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Minus"
 id = "setWindowPrimarySpan.decrease10Percent"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Equal"
 id = "setWindowPrimarySpan.increase10Percent"
 
 [[hotkeys]]
@@ -1054,17 +1060,17 @@ name = "2"
 type = "main"
 
 [[workspaces]]
-id = "BEB842B5-E894-4791-9FD1-397C3CDD3538"
+id = "0BE7E35C-EDD9-4D2C-901A-7006C7478107"
 layoutType = "niri"
 name = "3"
 
 [workspaces.monitorAssignment]
-type = "main"
+type = "secondary"
 
 [[workspaces]]
-id = "248AA883-2261-4D45-943C-79C0E46A232B"
+id = "D12D0E05-6531-4C5F-80E0-B1F914D7312B"
 layoutType = "niri"
 name = "4"
 
 [workspaces.monitorAssignment]
-type = "main"
+type = "secondary"
