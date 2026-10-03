@@ -111,6 +111,9 @@ function Invoke-DotfilesSetup {
   }
 
   $links = [ordered]@{
+    # Alacritty
+    # "$dotfilesRoot\alacritty\alacritty.toml" = "$env:APPDATA\alacritty\alacritty.toml"
+
     # Emacs
     # "$dotfilesRoot\emacs\early-init.el" = "$env:APPDATA\.emacs.d\early-init.el"
     # "$dotfilesRoot\emacs\init.el" = "$env:APPDATA\.emacs.d\init.el"

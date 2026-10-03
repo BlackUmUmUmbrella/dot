@@ -66,6 +66,9 @@ main() {
   OS=$(detect_os)
   DOT_DIR=$(cd "$(dirname "$0")" && pwd)
 
+  # Alacritty
+  # make_link "$DOT_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+
   # Emacs
   make_link "$DOT_DIR/emacs/early-init.el" "$HOME/.config/emacs/early-init.el"
   make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
