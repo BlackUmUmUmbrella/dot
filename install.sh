@@ -71,9 +71,9 @@ main() {
   make_link "$DOT_DIR/emacs/init.el" "$HOME/.config/emacs/init.el"
 
   # foot
-  if [ "$OS" = "Linux" ]; then
-    make_link "$DOT_DIR/foot/foot.ini" "$HOME/.config/foot/foot.ini"
-  fi
+  # if [ "$OS" = "Linux" ]; then
+  #   make_link "$DOT_DIR/foot/foot.ini" "$HOME/.config/foot/foot.ini"
+  # fi
 
   # Ghostty
   if [ "$OS" = "macOS" ]; then
@@ -84,6 +84,9 @@ main() {
 
   # Helix
   # make_link "$DOT_DIR/helix" "$HOME/.config/helix"
+
+  # Kitty
+  # make_link "$DOT_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
   # Neovim
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
