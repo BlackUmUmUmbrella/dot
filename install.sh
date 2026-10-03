@@ -92,9 +92,9 @@ main() {
   make_link "$DOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
   # Niri
-  if [ "$OS" = "Linux" ]; then
-    make_link "$DOT_DIR/niri/config.kdl" "$HOME/.config/niri/config.kdl"
-  fi
+  # if [ "$OS" = "Linux" ]; then
+  #   make_link "$DOT_DIR/niri/config.kdl" "$HOME/.config/niri/config.kdl"
+  # fi
 
   # OmniWM
   # if [ "$OS" = "macOS" ]; then
